@@ -37,23 +37,24 @@ manageStaticFilesServing({
 
 #### Config
 
-| **field**         | **type**      | **defaultValue** | **mandatory** | **description**                                                                                   |
-| ----------------- | ------------- | ---------------- | ------------- | ------------------------------------------------------------------------------------------------- |
-| repoUrl           | string        | undefined        | yes           | Your repository's URL                                                                             |
+| **field**         | **type**      | **defaultValue** | **mandatory** | **description**                                                                                                           |
+| ----------------- | ------------- | ---------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| repoUrl           | string        | undefined        | yes           | Your repository's URL                                                                                                     |
 | onHookReceived    | function      | undefined        | no            | Overwrites default express-static-files-manager hook controller passing express res, req and next fields to your function |
-| onStartBuild      | function      | undefined        | no            | Function called on build start                                                                    |
-| onError           | function      | undefined        | no            | Function called on error                                                                          |
-| onFinish          | function      | undefined        | no            | Function called on build finish                                                                   |
-| githubUsername    | string        | undefined        | no            | Your github username                                                                              |
-| githubPassword    | string        | undefined        | no            | Your github password                                                                              |
-| allowStdio        | boolean       | false            | no            | Setting this to true will pipe to stdio                                                           |
-| skipNpmInstall    | boolean       | false            | no            | If you wish to skip npm install phase                                                             |
-| skipBuildPhase    | boolean       | false            | no            | If you wish to skip build phase                                                                   |
-| branch            | string        | "master"         | no            | Your branch name                                                                                  |
-| customPublicDir   | string        | "public"         | no            | The directory containing your public static files                                                 |
-| customWorkDir     | string        | \$currentDir     | no            | The directory where builds are generated and processed                                            |
-| customBuildScript | string        | "build"          | no            | Set a custom script to use in your packages.json to build your files                              |
-| webhookConfig     | WebhookConfig | undefined        | no            | The webhook config                                                                                |
+| onStartBuild      | function      | undefined        | no            | Function called on build start                                                                                            |
+| onError           | function      | undefined        | no            | Function called on error                                                                                                  |
+| onFinish          | function      | undefined        | no            | Function called on build finish                                                                                           |
+| githubUsername    | string        | undefined        | no            | Your github username                                                                                                      |
+| githubPassword    | string        | undefined        | no            | Your github password                                                                                                      |
+| githubToken       | string        | undefined        | no            | Your github OAuth token                                                                                                   |
+| allowStdio        | boolean       | false            | no            | Setting this to true will pipe to stdio                                                                                   |
+| skipNpmInstall    | boolean       | false            | no            | If you wish to skip npm install phase                                                                                     |
+| skipBuildPhase    | boolean       | false            | no            | If you wish to skip build phase                                                                                           |
+| branch            | string        | "master"         | no            | Your branch name                                                                                                          |
+| customPublicDir   | string        | "public"         | no            | The directory containing your public static files                                                                         |
+| customWorkDir     | string        | \$currentDir     | no            | The directory where builds are generated and processed                                                                    |
+| customBuildScript | string        | "build"          | no            | Set a custom script to use in your packages.json to build your files                                                      |
+| webhookConfig     | WebhookConfig | undefined        | no            | The webhook config                                                                                                        |
 
 #### WebhookConfig
 
@@ -93,7 +94,7 @@ manageStaticFilesServing({
 
 ## Github credentials
 
-If your repository is private, make sure to either idealy set your SSH key on your hosting machine or alternately set `githubUsername` and `githubPassword`. You can also use a github access token for the `githubPassword`. If you take this path, you could also setup a bot with limited access rights.   
+If your repository is private, make sure to either idealy set your SSH key on your hosting machine or alternately set `githubUsername` and `githubPassword`. You can also use a github access token for the `githubPassword`. If you take this path, you could also setup a bot with limited access rights.
 
 ## Disclaimer
 

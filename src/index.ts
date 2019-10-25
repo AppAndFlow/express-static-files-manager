@@ -9,6 +9,7 @@ interface Config {
   skipBuildPhase?: boolean;
   githubUsername?: string;
   githubPassword?: string;
+  githubToken?: string;
   repoUrl: string;
   customBuildScript?: string;
   onStartBuild?: () => void;
@@ -109,6 +110,13 @@ async function fetchPublicFiles(config: Config) {
           'clone',
           `https://${config.githubUsername}:${config.githubPassword}@${repoUrl}`
         ],
+        { stdio, cwd: config.customWorkDir ? config.customWorkDir : undefined }
+      );
+    } else if (config.githubToken) {
+      // @ts-ignore
+      await execa(
+        'git',
+        ['clone', `https://${config.githubToken}@${repoUrl}`],
         { stdio, cwd: config.customWorkDir ? config.customWorkDir : undefined }
       );
     } else {
