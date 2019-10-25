@@ -2,6 +2,10 @@
 
 # express-static-files-manager
 
+## Installation
+
+`npm i express-static-files-manager`
+
 ## Motivations
 
 On some of our projects, we use a pattern that allows us to have a single hosting point. We use express static files to serve the frontend directly from our backend (in this case an express app). The motivation behind this package comes from the need we had to automatically update the files served by our backend and not manually copy our React project build each time into the public folder and then redeploying the updated backend. This package is also taking care of automatically updating the served frontend based on its current repository state. If the webhook is set up it will clone, rebuild and update the served files all by itself upon new commits.
