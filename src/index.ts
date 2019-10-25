@@ -108,7 +108,7 @@ async function fetchPublicFiles(config: Config) {
         'git',
         [
           'clone',
-          `https://${config.githubUsername}:${config.githubPassword}@${repoUrl}`
+          `https://${config.githubUsername}:${config.githubPassword}@${repoUrl}.git`
         ],
         { stdio, cwd: config.customWorkDir ? config.customWorkDir : undefined }
       );
@@ -116,11 +116,11 @@ async function fetchPublicFiles(config: Config) {
       // @ts-ignore
       await execa(
         'git',
-        ['clone', `https://${config.githubToken}@${repoUrl}`],
+        ['clone', `https://${config.githubToken}@${repoUrl}.git`],
         { stdio, cwd: config.customWorkDir ? config.customWorkDir : undefined }
       );
     } else {
-      await execa('git', ['clone', config.repoUrl], {
+      await execa('git', ['clone', `${config.repoUrl}.git`], {
         stdio,
         cwd: config.customWorkDir ? config.customWorkDir : undefined
       });
