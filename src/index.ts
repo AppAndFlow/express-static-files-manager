@@ -219,8 +219,14 @@ function handleHookCallback(
     config.onHookReceived(req, res, next, config);
   } else {
     if (
-      (config.branch && req.body.ref.includes(config.branch)) ||
-      (req.body.ref.includes('master') && !config.branch)
+      (config.branch &&
+        req.body &&
+        req.body.ref &&
+        req.body.ref.includes(config.branch)) ||
+      (req.body &&
+        req.body.ref &&
+        req.body.ref.includes('master') &&
+        !config.branch)
     ) {
       if (config.webhookConfig.secret) {
         const payload = JSON.stringify(req.body);
