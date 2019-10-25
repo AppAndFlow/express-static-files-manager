@@ -14,7 +14,7 @@ On some of our projects, we use a pattern that allows us to have a single hostin
 
 ### manageStaticFilesServing(config : Config)
 
-The only function that needs to be called when your express starts.
+The only function that needs to be called when your express app starts.
 This will clone your project, build it and then place it within your `/public` directory ( or the custom public directory if that is set) ready to be served by your express webserver.
 If you set up the webhook, this will also automatically update your served files within the `/public` directory upon new commits.
 
