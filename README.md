@@ -88,3 +88,7 @@ manageStaticFilesServing({
 ## Github credentials
 
 If your repository is private, make sure to either idealy set your SSH key on your hosting machine or alternately set `githubUsername` and `githubPassword`. You can also use a github access token for the `githubPassword`. If you take this path, you could also setup a bot with limited access rights.   
+
+## Disclaimer
+
+This is still in early stage development. Not production ready. Use it at your own risks.
