@@ -128,7 +128,7 @@ async function fetchPublicFiles(config: Config) {
 
     await execa('git', ['checkout', branch], {
       stdio,
-      cwd: config.customWorkDir ? config.customWorkDir : undefined
+      cwd: targetDirectory
     });
 
     if (!config.skipNpmInstall) {
