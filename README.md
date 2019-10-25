@@ -1,3 +1,5 @@
+[![npm (scoped)](https://img.shields.io/npm/v/quick-picker.svg)](https://www.npmjs.com/package/express-static-files-manager)
+
 # express-static-files-manager
 
 ## Motivations
