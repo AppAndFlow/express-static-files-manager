@@ -1,6 +1,8 @@
 # express-static-files-manager
 
-// describe why / what
+## Motivations
+
+Sometimes on some of our projects, we use a pattern where we like to have a single hosting point. We use express static files serving to serve the frontend directly from our backend (in this case an express app). The motivation behind this package comes from the need we had to automatically update the files served by our backend and not mannualy copying our React project build for instance ourself each time into the `public` folder and then redeploying the updated backend. This package is also taking care of automatically updating the served frontend based on it's current repository state. If the webhook is set up it will clone, rebuild and update the served files all by itself.   
 
 ## Usage
 
@@ -32,7 +34,7 @@ manageStaticFilesServing({
 | **field**         | **type**      | **defaultValue** | **mandatory** | **description**                                                                                   |
 | ----------------- | ------------- | ---------------- | ------------- | ------------------------------------------------------------------------------------------------- |
 | repoUrl           | string        | undefined        | yes           | Your repository's URL                                                                             |
-| onHookReceived    | function      | undefined        | no            | Overwrites default express-static-files-manager hook controller passing express res, req and next |
+| onHookReceived    | function      | undefined        | no            | Overwrites default express-static-files-manager hook controller passing express res, req and next fields to your function |
 | onStartBuild      | function      | undefined        | no            | Function called on build start                                                                    |
 | onError           | function      | undefined        | no            | Function called on error                                                                          |
 | onFinish          | function      | undefined        | no            | Function called on build finish                                                                   |
