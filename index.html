@@ -95,7 +95,7 @@ app.use(express.static(path.join(__dirname, <span class="hljs-string">'../public
 
 manageStaticFilesServing({
   <span class="hljs-attr">repoUrl</span>: <span class="hljs-string">'https://github.com/Username/yourReponame'</span>,
-  <span class="hljs-attr">branch</span>: <span class="hljs-string">'production'</span>
+  <span class="hljs-attr">showConsoleLog</span>: <span class="hljs-literal">true</span>
 });</code></pre>
 				<a href="#config" id="config" style="color: inherit; text-decoration: none;">
 					<h4>Config</h4>
@@ -284,9 +284,9 @@ app.use(express.static(path.join(__dirname, <span class="hljs-string">'../public
 
 manageStaticFilesServing({
   <span class="hljs-attr">repoUrl</span>: <span class="hljs-string">'https://github.com/yourUserName/yourRepositoryName'</span>,
-  <span class="hljs-attr">branch</span>: <span class="hljs-string">'master'</span>,
+  <span class="hljs-attr">branch</span>: <span class="hljs-string">'production'</span>,
   <span class="hljs-attr">webhookConfig</span>: {
-    <span class="hljs-attr">callbackUrl</span>: <span class="hljs-string">'/githubhook'</span>,
+    <span class="hljs-attr">endpoint</span>: <span class="hljs-string">'/githubhook'</span>,
     <span class="hljs-attr">secret</span>: <span class="hljs-string">'yoursupertopsecret'</span>,
     <span class="hljs-attr">expressApp</span>: app
   }
