@@ -2,7 +2,7 @@
 
 # express-static-files-manager
 
-This package builds and updates your static served files on express based on a given Github repository.
+This package automatically builds and updates your static served files on express based on a given Github repository.
 
 ## Installation
 
