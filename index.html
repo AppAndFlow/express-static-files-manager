@@ -68,6 +68,7 @@
 				<a href="#express-static-files-manager" id="express-static-files-manager" style="color: inherit; text-decoration: none;">
 					<h1>express-static-files-manager</h1>
 				</a>
+				<p>This package automatically builds and updates your static served files on express based on a given Github repository.</p>
 				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
 					<h2>Installation</h2>
 				</a>
@@ -270,7 +271,7 @@ manageStaticFilesServing({
 				</a>
 				<ul>
 					<li>Declare a webhook manually on your repository <a href="https://github.com/%7ByourOrganization%7D/%7BrepostoryName%7D/settings/hooks/new">https://github.com/{yourOrganization}/{repostoryName}/settings/hooks/new</a></li>
-					<li>Assign it a route and express-static-files-manager will automatically take care of that endpoint as long as you set <code>webhookConfig.callbackUrl</code> accordingly.</li>
+					<li>Assign it a route and express-static-files-manager will automatically take care of that endpoint as long as you set <code>webhookConfig.endpoint</code> accordingly.</li>
 					<li>Create a secret passphrase and set <code>webhookConfig.secret</code> accordingly.</li>
 				</ul>
 				<p><code>index.ts</code></p>
