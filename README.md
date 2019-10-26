@@ -69,7 +69,7 @@ manageStaticFilesServing({
 ## Webhook usage
 
 - Declare a webhook manually on your repository https://github.com/{yourOrganization}/{repostoryName}/settings/hooks/new
-- Assign it a route and express-static-files-manager will automatically take care of that endpoint as long as you set `webhookConfig.callbackUrl` accordingly.
+- Assign it a route and express-static-files-manager will automatically take care of that endpoint as long as you set `webhookConfig.endpoint` accordingly.
 - Create a secret passphrase and set `webhookConfig.secret` accordingly.
 
 `index.ts`
