@@ -7,6 +7,7 @@ import path from 'path';
 interface Config {
   skipNpmInstall?: boolean;
   skipBuildPhase?: boolean;
+  showConsoleLog?: boolean;
   githubUsername?: string;
   githubPassword?: string;
   githubToken?: string;
@@ -27,7 +28,7 @@ interface Config {
   customWorkDir?: string;
   webhookConfig?: {
     expressApp: any;
-    callbackUrl: string;
+    endpoint: string;
     secret?: string;
   };
 }
@@ -69,7 +70,10 @@ async function fetchPublicFiles(config: Config) {
 
     const needBackup = await fs.pathExists(finalDestinationPath);
     if (needBackup) {
-      console.log('--Creating public backup--');
+      if (config.showConsoleLog) {
+        console.log('--Creating public backup--');
+      }
+
       currentPublicBackup = config.customWorkDir
         ? path.join(config.customWorkDir, 'publicBackup')
         : path.resolve(process.cwd(), 'publicBackup');
@@ -94,8 +98,9 @@ async function fetchPublicFiles(config: Config) {
       config.repoUrl.indexOf('github.com/')
     );
 
-    // tslint:disable-next-line:no-console
-    console.log('--Cloning repo--');
+    if (config.showConsoleLog) {
+      console.log('--Cloning repo--');
+    }
 
     let branch = 'master';
     if (config.branch) {
@@ -132,12 +137,16 @@ async function fetchPublicFiles(config: Config) {
     });
 
     if (!config.skipNpmInstall) {
-      console.log('--Installing dependencies--');
+      if (config.showConsoleLog) {
+        console.log('--Installing dependencies--');
+      }
       await execa.command(`npm install --cwd ${targetDirectory}`, execaOpts);
     }
 
     if (!config.skipBuildPhase) {
-      console.log('--Building react project--');
+      if (config.showConsoleLog) {
+        console.log('--Building project--');
+      }
 
       let buildScript = 'build';
       if (config.customBuildScript) {
@@ -161,8 +170,9 @@ async function fetchPublicFiles(config: Config) {
       config.onFinish();
     }
 
-    // tslint:disable-next-line:no-console
-    console.log('--Public directory created--');
+    if (config.showConsoleLog) {
+      console.log('--Public directory successfully created--');
+    }
     setIsBuilding(false);
     if (getPendingBuild()) {
       setPendingBuild(false);
@@ -177,13 +187,13 @@ async function fetchPublicFiles(config: Config) {
     if (config.onError) {
       config.onError(e);
     } else {
-      // tslint:disable-next-line:no-console
       console.log(e);
     }
 
     if (currentPublicBackup) {
-      // tslint:disable-next-line:no-console
-      console.log('--Restoring backup--');
+      if (config.showConsoleLog) {
+        console.log('--Restoring backup--');
+      }
       await fs.copy(currentPublicBackup, finalDestinationPath);
       await fs.remove(currentPublicBackup);
     }
@@ -200,7 +210,7 @@ export function manageStaticFilesServing(config: Config) {
 async function createWebhook(config: Config) {
   try {
     config.webhookConfig.expressApp.post(
-      config.webhookConfig.callbackUrl,
+      config.webhookConfig.endpoint,
       (req: Request, res: Response, next: NextFunction) =>
         handleHookCallback(req, res, next, config)
     );

@@ -47,6 +47,7 @@ manageStaticFilesServing({
 | githubPassword    | string        | undefined        | no            | Your github password                                                                                                      |
 | githubToken       | string        | undefined        | no            | Your github OAuth token                                                                                                   |
 | allowStdio        | boolean       | false            | no            | Setting this to true will pipe to stdio                                                                                   |
+| showConsoleLog    | boolean       | false            | no            | Setting this to true will log the whole process                                                                           |
 | skipNpmInstall    | boolean       | false            | no            | If you wish to skip npm install phase                                                                                     |
 | skipBuildPhase    | boolean       | false            | no            | If you wish to skip build phase                                                                                           |
 | branch            | string        | "master"         | no            | Your branch name                                                                                                          |
@@ -57,11 +58,11 @@ manageStaticFilesServing({
 
 #### WebhookConfig
 
-| **field**   | **type** | **defaultValue** | **mandatory** | **description**                                      |
-| ----------- | -------- | ---------------- | ------------- | ---------------------------------------------------- |
-| expressApp  | object   | undefined        | yes           | Your express app (`const expressApp = express();`)   |
-| callbackUrl | string   | undefined        | yes           | The endpoint called by your github hook                 |
-| secret      | string   | undefined        | no            | The secret passphrase associated to your github hook |
+| **field**  | **type** | **defaultValue** | **mandatory** | **description**                                      |
+| ---------- | -------- | ---------------- | ------------- | ---------------------------------------------------- |
+| expressApp | object   | undefined        | yes           | Your express app (`const expressApp = express();`)   |
+| endpoint   | string   | undefined        | yes           | The endpoint called by your github hook              |
+| secret     | string   | undefined        | no            | The secret passphrase associated to your github hook |
 
 ## Webhook usage
 
