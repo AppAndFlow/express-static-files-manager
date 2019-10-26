@@ -82,9 +82,8 @@
 				<a href="#managestaticfilesservingconfig--config" id="managestaticfilesservingconfig--config" style="color: inherit; text-decoration: none;">
 					<h3>manageStaticFilesServing(config : Config)</h3>
 				</a>
-				<p>The only function that needs to be called when your express starts.
-					This will clone your project, build it and then place it within your <code>/public</code> directory ( or the custom public directory if that is set) ready to be served by your express webserver.
-				If you set up the webhook, this will also automatically update your served files within the <code>/public</code> directory upon new commits.</p>
+				<p>The only function that needs to be called when your express app starts.
+				This will clone your project, build it and then place it within your <code>/public</code> directory (or the custom public directory if that is set) ready to be served by your express webserver. For this package, the default location of the <code>/public</code> directory is at the root of your project. If you set up the webhook, this will also automatically update your served files within the <code>/public</code> directory upon new commits.</p>
 				<p><code>index.ts</code></p>
 				<pre><code class="language-js"><span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">'express'</span>;
 <span class="hljs-keyword">import</span> path <span class="hljs-keyword">from</span> <span class="hljs-string">'path'</span>;
@@ -175,6 +174,13 @@ manageStaticFilesServing({
 							<td>Setting this to true will pipe to stdio</td>
 						</tr>
 						<tr>
+							<td>showConsoleLog</td>
+							<td>boolean</td>
+							<td>false</td>
+							<td>no</td>
+							<td>Setting this to true will log the whole process</td>
+						</tr>
+						<tr>
 							<td>skipNpmInstall</td>
 							<td>boolean</td>
 							<td>false</td>
@@ -245,11 +251,11 @@ manageStaticFilesServing({
 							<td>Your express app (<code>const expressApp = express();</code>)</td>
 						</tr>
 						<tr>
-							<td>callbackUrl</td>
+							<td>endpoint</td>
 							<td>string</td>
 							<td>undefined</td>
 							<td>yes</td>
-							<td>The route called by your github hook</td>
+							<td>The endpoint called by your github hook</td>
 						</tr>
 						<tr>
 							<td>secret</td>
@@ -288,7 +294,7 @@ manageStaticFilesServing({
 				<a href="#github-credentials" id="github-credentials" style="color: inherit; text-decoration: none;">
 					<h2>Github credentials</h2>
 				</a>
-				<p>If your repository is private, make sure to either idealy set your SSH key on your hosting machine or alternately set <code>githubUsername</code> and <code>githubPassword</code>. You can also use a github access token for the <code>githubToken</code>. If you take this path, you could also setup a bot with limited access rights.</p>
+				<p>If your repository is private, make sure to either ideally set your SSH key on your hosting machine or alternately set <code>githubUsername</code> and <code>githubPassword</code>. You can also use a github access token for the <code>githubToken</code>. If you take this path, consider setting up a bot with limited access rights to your repository.</p>
 				<a href="#disclaimer" id="disclaimer" style="color: inherit; text-decoration: none;">
 					<h2>Disclaimer</h2>
 				</a>
