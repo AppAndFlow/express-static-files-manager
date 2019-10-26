@@ -60,7 +60,7 @@ manageStaticFilesServing({
 | **field**   | **type** | **defaultValue** | **mandatory** | **description**                                      |
 | ----------- | -------- | ---------------- | ------------- | ---------------------------------------------------- |
 | expressApp  | object   | undefined        | yes           | Your express app (`const expressApp = express();`)   |
-| callbackUrl | string   | undefined        | yes           | The route called by your github hook                 |
+| callbackUrl | string   | undefined        | yes           | The endpoint called by your github hook                 |
 | secret      | string   | undefined        | no            | The secret passphrase associated to your github hook |
 
 ## Webhook usage
