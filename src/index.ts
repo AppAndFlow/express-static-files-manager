@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 import execa from 'execa';
-import { NextFunction, Request, Response } from 'express';
+import { Express, NextFunction, Request, Response } from 'express';
 import fs from 'fs-extra';
 import path from 'path';
 
@@ -27,7 +27,7 @@ interface Config {
   customPublicDir?: string;
   customWorkDir?: string;
   webhookConfig?: {
-    expressApp: any;
+    expressApp: Express;
     endpoint: string;
     secret?: string;
   };
