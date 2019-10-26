@@ -54,7 +54,7 @@ manageStaticFilesServing({
 | customPublicDir   | string        | "public"         | no            | The directory containing your public static files                                                                         |
 | customWorkDir     | string        | \$currentDir     | no            | The directory where builds are generated and processed                                                                    |
 | customBuildScript | string        | "build"          | no            | Set a custom script to use in your packages.json to build your files                                                      |
-| webhookConfig     | WebhookConfig | undefined        | no            | The webhook config                                                                                                        |
+| webhookConfig     | WebhookConfig | undefined        | no            | The Github webhook config                                                                                                        |
 
 #### WebhookConfig
 
