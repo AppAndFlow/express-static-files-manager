@@ -2,6 +2,8 @@
 
 # express-static-files-manager
 
+This package builds and updates your static served files on express based on a given repository.
+
 ## Installation
 
 `npm i express-static-files-manager`
