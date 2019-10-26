@@ -93,7 +93,7 @@ manageStaticFilesServing({
 
 ## Github credentials
 
-If your repository is private, make sure to either ideally set your SSH key on your hosting machine or alternately set `githubUsername` and `githubPassword`. You can also use a github access token for the `githubToken`. If you take this path, you could also setup a bot with limited access rights.
+If your repository is private, make sure to either ideally set your SSH key on your hosting machine or alternately set `githubUsername` and `githubPassword`. You can also use a github access token for the `githubToken`. If you take this path, consider setting up a bot with limited access rights.
 
 ## Disclaimer
 
