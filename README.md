@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 manageStaticFilesServing({
   repoUrl: 'https://github.com/Username/yourReponame',
-  branch: 'production'
+  showConsoleLog: true
 });
 ```
 
@@ -83,9 +83,9 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 manageStaticFilesServing({
   repoUrl: 'https://github.com/yourUserName/yourRepositoryName',
-  branch: 'master',
+  branch: 'production',
   webhookConfig: {
-    callbackUrl: '/githubhook',
+    endpoint: '/githubhook',
     secret: 'yoursupertopsecret',
     expressApp: app
   }
