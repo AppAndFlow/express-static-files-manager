@@ -103,4 +103,4 @@ If your repository is private, make sure to either ideally set your SSH key on y
 
 ## Disclaimer
 
-This is still in early stage development. Not production ready. Use it at your own risks.
+This is still in early stage development. Not production ready. Use it at your own risks. This is also super project specific and very opinionated.
