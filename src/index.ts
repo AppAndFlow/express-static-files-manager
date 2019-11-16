@@ -18,7 +18,7 @@ interface Config {
     req: Request,
     res: Response,
     next: NextFunction,
-    config: Config,
+    config: Config
   ) => void;
   onError?: (err: any) => void;
   allowStdio?: boolean;
@@ -65,7 +65,7 @@ async function fetchPublicFiles(config: Config) {
 
     const repoName = repoUrlcheck.substring(
       repoUrlcheck.lastIndexOf('/') + 1,
-      repoUrlcheck.lastIndexOf('.git'),
+      repoUrlcheck.lastIndexOf('.git')
     );
 
     const needBackup = await fs.pathExists(finalDestinationPath);
@@ -95,7 +95,7 @@ async function fetchPublicFiles(config: Config) {
     await fs.mkdirp(targetDirectory);
 
     const repoUrl = config.repoUrl.substring(
-      config.repoUrl.indexOf('github.com/'),
+      config.repoUrl.indexOf('github.com/')
     );
 
     if (config.showConsoleLog) {
@@ -113,27 +113,27 @@ async function fetchPublicFiles(config: Config) {
         'git',
         [
           'clone',
-          `https://${config.githubUsername}:${config.githubPassword}@${repoUrl}.git`,
+          `https://${config.githubUsername}:${config.githubPassword}@${repoUrl}.git`
         ],
-        { stdio, cwd: config.customWorkDir ? config.customWorkDir : undefined },
+        { stdio, cwd: config.customWorkDir ? config.customWorkDir : undefined }
       );
     } else if (config.githubToken) {
       // @ts-ignore
       await execa(
         'git',
         ['clone', `https://${config.githubToken}@${repoUrl}.git`],
-        { stdio, cwd: config.customWorkDir ? config.customWorkDir : undefined },
+        { stdio, cwd: config.customWorkDir ? config.customWorkDir : undefined }
       );
     } else {
       await execa('git', ['clone', `${config.repoUrl}.git`], {
         stdio,
-        cwd: config.customWorkDir ? config.customWorkDir : undefined,
+        cwd: config.customWorkDir ? config.customWorkDir : undefined
       });
     }
 
     await execa('git', ['checkout', branch], {
       stdio,
-      cwd: targetDirectory,
+      cwd: targetDirectory
     });
 
     if (!config.skipNpmInstall) {
@@ -143,7 +143,7 @@ async function fetchPublicFiles(config: Config) {
       await execa.command(`npm install --cwd ${targetDirectory}`, execaOpts);
       await execa.command(
         `npm install --only=dev --cwd ${targetDirectory}`,
-        execaOpts,
+        execaOpts
       );
     }
 
@@ -158,7 +158,7 @@ async function fetchPublicFiles(config: Config) {
       }
       await execa.command(
         `npm run ${buildScript} --cwd ${targetDirectory}`,
-        execaOpts,
+        execaOpts
       );
     }
 
@@ -216,7 +216,7 @@ async function createWebhook(config: Config) {
     config.webhookConfig.expressApp.post(
       config.webhookConfig.endpoint,
       (req: Request, res: Response, next: NextFunction) =>
-        handleHookCallback(req, res, next, config),
+        handleHookCallback(req, res, next, config)
     );
   } catch (e) {
     console.log(e);
@@ -227,7 +227,7 @@ function handleHookCallback(
   req: Request,
   res: Response,
   next: NextFunction,
-  config: Config,
+  config: Config
 ) {
   if (config.onHookReceived) {
     config.onHookReceived(req, res, next, config);
